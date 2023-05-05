@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,6 +41,16 @@ public class ProductControllers {
 		List<Product> gettingList= pservice.getAllProducts();
 			
 		return new ResponseEntity<List<Product>>(gettingList, HttpStatus.OK);
+	}
+	
+	// 3. Updating product details
+	
+	@PutMapping("/products")
+	public ResponseEntity<Product> updateProductHandler(@Valid @RequestBody Product product){
+			
+		Product updateProductDetails = pservice.updateProduct(product);
+			
+		return new ResponseEntity<Product>(updateProductDetails, HttpStatus.ACCEPTED);
 	}
 	
 	
