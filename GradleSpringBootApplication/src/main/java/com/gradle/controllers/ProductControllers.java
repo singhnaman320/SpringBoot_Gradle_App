@@ -65,5 +65,15 @@ public class ProductControllers {
 		return  new ResponseEntity<Product>(deleteProduct, HttpStatus.ACCEPTED);
 	}
 	
+	// 5. Get products by its category
+	
+	@GetMapping("/products/{cat}")
+	public ResponseEntity<List<Product>> getProductByCategoryHandler(@PathVariable("cat") String category){
+			
+		List<Product> productByCategory = pservice.getsProductByCategory(category); 
+			
+		return new ResponseEntity<List<Product>>(productByCategory, HttpStatus.CREATED);
+	}
+	
 	
 }
