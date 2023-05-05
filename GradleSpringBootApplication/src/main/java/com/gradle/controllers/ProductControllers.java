@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gradle.models.Product;
+import com.gradle.models.ProductDTO;
 import com.gradle.services.ProductServices;
 
 import jakarta.validation.Valid;
@@ -75,5 +76,14 @@ public class ProductControllers {
 		return new ResponseEntity<List<Product>>(productByCategory, HttpStatus.CREATED);
 	}
 	
+	// 6. get Product Name, Quantity, Price
+	
+	@GetMapping("/productsDto")
+	public ResponseEntity<List<ProductDTO>> getProductNameQtyPriceHandler(){
+			
+		List<ProductDTO> productNameQuantityPrice = pservice.getProductNameQtyPrice();
+			
+		return new ResponseEntity<List<ProductDTO>>(productNameQuantityPrice,HttpStatus.OK);
+	}
 	
 }
