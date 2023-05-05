@@ -1,4 +1,4 @@
-<h1>[] SpringBoot Gradle App []</h1>
+<h1 align="center">[] SpringBoot Gradle App []</h1>
 This repository deals with codebase of basic Spring Boot application developed using Gradle.
 
 <h2>Tech-Stacks and Tools:</h2>
