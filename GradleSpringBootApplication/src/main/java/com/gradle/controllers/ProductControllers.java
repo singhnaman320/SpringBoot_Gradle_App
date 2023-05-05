@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,6 +53,16 @@ public class ProductControllers {
 		Product updateProductDetails = pservice.updateProduct(product);
 			
 		return new ResponseEntity<Product>(updateProductDetails, HttpStatus.ACCEPTED);
+	}
+	
+	// 4. Delete product by its Id
+	
+	@DeleteMapping("/products/{Id}")
+	public ResponseEntity<Product> deleteProductByIdHandler(@PathVariable("Id") Integer productId){
+			
+		Product deleteProduct = pservice.deleteProductById(productId);
+			
+		return  new ResponseEntity<Product>(deleteProduct, HttpStatus.ACCEPTED);
 	}
 	
 	
